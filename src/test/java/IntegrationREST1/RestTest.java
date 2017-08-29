@@ -7,7 +7,9 @@ import com.sun.net.httpserver.HttpHandler;
 import com.sun.net.httpserver.HttpServer;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.test.JerseyTest;
+import org.junit.Assert;
 import org.junit.Test;
+//todo тоже самое с импортами что и в App.class
 
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.Application;
@@ -22,22 +24,24 @@ import static org.junit.Assert.assertEquals;
 
 public class RestTest {
 
-
+    //todo форматирование кода. Используй автоформатирование идеи. Ctrl + shift + A -> reformat code
  @Test
-    public void RestTest(){
+    public void RestTest(){ //todo название метода не по java naming convention (должен быть lowerCamelCase)
      Client client = Client.create();
      WebResource webResource = client
              .resource("http://localhost:2222/rest/calc/plus/2/3");
-     ClientResponse response = webResource.accept("application/json")
+     ClientResponse response = webResource.accept("application/json") //todo Используй константы для таких вещей: MediaType.APPLICATION_JSON_TYPE
              .get(ClientResponse.class);
 
      if (response.getStatus() != 200) {
          throw new RuntimeException("Failed : HTTP error code : "
-                 + response.getStatus());
+                 + response.getStatus()); //todo в тестах используй ассерты, чтобы проверять, что тест делает то что тебе нужно: Assert.assertNotEquals("статус должен быть любой, кроме 200", response.getStatus(), 200);
+
      }
+
      String answer = response.getEntity(String.class);
     assertEquals("Answer: 6",answer);
-     System.out.println(answer.toString());
+     System.out.println(answer.toString()); //todo: такого в production-ready тесте не должно быть. Если очень надо такое в тесте, то надо использовать логирование и логирующие фреймворки. slf4j + logback например. Можешь нагуглить. У нас в проекте используется slf4j + JUL. Но JUL мутная хуйня, не советую.
 
  }
 }

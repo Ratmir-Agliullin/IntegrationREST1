@@ -12,30 +12,31 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <!--todo: нет указания на версию java compiler. Это java 8 или java 7 проект - не понятно. Поймешь о чем я, если загуглишь "maven java version"-->
   </properties>
 
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>4.12</version>
+      <version>4.12</version> <!--todo вынести в properties-->
       <scope>test</scope>
     </dependency>
 
     <dependency>
       <groupId>com.googlecode.json-simple</groupId>
       <artifactId>json-simple</artifactId>
-      <version>1.1.1</version>
+      <version>1.1.1</version> <!--todo вынести в properties-->
     </dependency>
     <dependency>
       <groupId>com.sun.jersey</groupId>
       <artifactId>jersey-client</artifactId>
-      <version>1.17.1</version>
+      <version>1.17.1</version> <!--todo вынести в properties-->
     </dependency>
     <dependency>
       <groupId>org.glassfish.jersey.test-framework.providers</groupId>
       <artifactId>jersey-test-framework-provider-inmemory</artifactId>
-      <version>2.26-b09</version>
+      <version>2.26-b09</version> <!--todo вынести в properties-->
       <scope>test</scope>
     </dependency>
   </dependencies>
@@ -46,7 +47,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-failsafe-plugin</artifactId>
-        <version>2.19.1</version>
+        <version>2.19.1</version> <!--todo вынести в properties-->
         <executions>
           <execution>
             <id>integration-test</id>
